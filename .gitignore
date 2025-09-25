@@ -43,7 +43,7 @@ ehthumbs.db
 Thumbs.db
 
 # Project specific
-*.json
-*.csv
-*.pdf
-*.pptx
+# *.json
+# *.csv
+# *.pdf
+# *.pptx
