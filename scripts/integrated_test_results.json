@@ -1,0 +1,3403 @@
+{
+  "test_execution_time": "2025-09-27T13:37:28.975543",
+  "extended_kemeny_rule": {
+    "total_tests": 13,
+    "passed_tests": 13,
+    "failed_tests": 0,
+    "pass_rate": 100.0,
+    "results": [
+      {
+        "test_name": "basic_3_candidates",
+        "description": "3つの候補者での基本的なケース",
+        "input": {
+          "subjective_preference": [
+            2,
+            1,
+            0
+          ],
+          "fitness_scores": [
+            0.8,
+            0.9,
+            0.7
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 1.0
+        },
+        "expected": {
+          "ranking": [
+            2,
+            1,
+            0
+          ],
+          "score": 2.0
+        },
+        "actual": {
+          "ranking": [
+            2,
+            1,
+            0
+          ],
+          "score": 2.0
+        },
+        "passed": true,
+        "details": {
+          "best_ranking": [
+            2,
+            1,
+            0
+          ],
+          "best_score": 2.0,
+          "all_calculations": [
+            {
+              "ranking": [
+                2,
+                1,
+                0
+              ],
+              "preference_distance": 0,
+              "fitness_distance": 2,
+              "total_score": 2.0
+            },
+            {
+              "ranking": [
+                1,
+                2,
+                0
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 1,
+              "total_score": 2.0
+            },
+            {
+              "ranking": [
+                1,
+                0,
+                2
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 0,
+              "total_score": 2.0
+            },
+            {
+              "ranking": [
+                2,
+                0,
+                1
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 3,
+              "total_score": 4.0
+            },
+            {
+              "ranking": [
+                0,
+                2,
+                1
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 2,
+              "total_score": 4.0
+            },
+            {
+              "ranking": [
+                0,
+                1,
+                2
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 1,
+              "total_score": 4.0
+            }
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 1.0
+        }
+      },
+      {
+        "test_name": "perfect_alignment",
+        "description": "主観的選好と客観的フィット度が完全に一致する場合",
+        "input": {
+          "subjective_preference": [
+            0,
+            1,
+            2
+          ],
+          "fitness_scores": [
+            0.9,
+            0.7,
+            0.5
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 1.0
+        },
+        "expected": {
+          "ranking": [
+            0,
+            1,
+            2
+          ],
+          "score": 0.0
+        },
+        "actual": {
+          "ranking": [
+            0,
+            1,
+            2
+          ],
+          "score": 0.0
+        },
+        "passed": true,
+        "details": {
+          "best_ranking": [
+            0,
+            1,
+            2
+          ],
+          "best_score": 0.0,
+          "all_calculations": [
+            {
+              "ranking": [
+                0,
+                1,
+                2
+              ],
+              "preference_distance": 0,
+              "fitness_distance": 0,
+              "total_score": 0.0
+            },
+            {
+              "ranking": [
+                0,
+                2,
+                1
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 1,
+              "total_score": 2.0
+            },
+            {
+              "ranking": [
+                1,
+                0,
+                2
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 1,
+              "total_score": 2.0
+            },
+            {
+              "ranking": [
+                1,
+                2,
+                0
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 2,
+              "total_score": 4.0
+            },
+            {
+              "ranking": [
+                2,
+                0,
+                1
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 2,
+              "total_score": 4.0
+            },
+            {
+              "ranking": [
+                2,
+                1,
+                0
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 3,
+              "total_score": 6.0
+            }
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 1.0
+        }
+      },
+      {
+        "test_name": "complete_disagreement",
+        "description": "主観的選好と客観的フィット度が完全に逆の場合",
+        "input": {
+          "subjective_preference": [
+            0,
+            1,
+            2
+          ],
+          "fitness_scores": [
+            0.3,
+            0.5,
+            0.9
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 1.0
+        },
+        "expected": {
+          "ranking": [
+            0,
+            1,
+            2
+          ],
+          "score": 3.0
+        },
+        "actual": {
+          "ranking": [
+            0,
+            1,
+            2
+          ],
+          "score": 3.0
+        },
+        "passed": true,
+        "details": {
+          "best_ranking": [
+            0,
+            1,
+            2
+          ],
+          "best_score": 3.0,
+          "all_calculations": [
+            {
+              "ranking": [
+                0,
+                1,
+                2
+              ],
+              "preference_distance": 0,
+              "fitness_distance": 3,
+              "total_score": 3.0
+            },
+            {
+              "ranking": [
+                0,
+                2,
+                1
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 2,
+              "total_score": 3.0
+            },
+            {
+              "ranking": [
+                1,
+                0,
+                2
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 2,
+              "total_score": 3.0
+            },
+            {
+              "ranking": [
+                1,
+                2,
+                0
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 1,
+              "total_score": 3.0
+            },
+            {
+              "ranking": [
+                2,
+                0,
+                1
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 1,
+              "total_score": 3.0
+            },
+            {
+              "ranking": [
+                2,
+                1,
+                0
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 0,
+              "total_score": 3.0
+            }
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 1.0
+        }
+      },
+      {
+        "test_name": "preference_weighted",
+        "description": "主観的選好を重視する場合（重み2倍）",
+        "input": {
+          "subjective_preference": [
+            0,
+            1,
+            2
+          ],
+          "fitness_scores": [
+            0.3,
+            0.5,
+            0.9
+          ],
+          "preference_weight": 2.0,
+          "fitness_weight": 1.0
+        },
+        "expected": {
+          "ranking": [
+            0,
+            1,
+            2
+          ],
+          "score": 3.0
+        },
+        "actual": {
+          "ranking": [
+            0,
+            1,
+            2
+          ],
+          "score": 3.0
+        },
+        "passed": true,
+        "details": {
+          "best_ranking": [
+            0,
+            1,
+            2
+          ],
+          "best_score": 3.0,
+          "all_calculations": [
+            {
+              "ranking": [
+                0,
+                1,
+                2
+              ],
+              "preference_distance": 0,
+              "fitness_distance": 3,
+              "total_score": 3.0
+            },
+            {
+              "ranking": [
+                0,
+                2,
+                1
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 2,
+              "total_score": 4.0
+            },
+            {
+              "ranking": [
+                1,
+                0,
+                2
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 2,
+              "total_score": 4.0
+            },
+            {
+              "ranking": [
+                1,
+                2,
+                0
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 1,
+              "total_score": 5.0
+            },
+            {
+              "ranking": [
+                2,
+                0,
+                1
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 1,
+              "total_score": 5.0
+            },
+            {
+              "ranking": [
+                2,
+                1,
+                0
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 0,
+              "total_score": 6.0
+            }
+          ],
+          "preference_weight": 2.0,
+          "fitness_weight": 1.0
+        }
+      },
+      {
+        "test_name": "fitness_weighted",
+        "description": "客観的フィット度を重視する場合（重み2倍）",
+        "input": {
+          "subjective_preference": [
+            0,
+            1,
+            2
+          ],
+          "fitness_scores": [
+            0.3,
+            0.5,
+            0.9
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 2.0
+        },
+        "expected": {
+          "ranking": [
+            2,
+            1,
+            0
+          ],
+          "score": 3.0
+        },
+        "actual": {
+          "ranking": [
+            2,
+            1,
+            0
+          ],
+          "score": 3.0
+        },
+        "passed": true,
+        "details": {
+          "best_ranking": [
+            2,
+            1,
+            0
+          ],
+          "best_score": 3.0,
+          "all_calculations": [
+            {
+              "ranking": [
+                2,
+                1,
+                0
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 0,
+              "total_score": 3.0
+            },
+            {
+              "ranking": [
+                1,
+                2,
+                0
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 1,
+              "total_score": 4.0
+            },
+            {
+              "ranking": [
+                2,
+                0,
+                1
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 1,
+              "total_score": 4.0
+            },
+            {
+              "ranking": [
+                0,
+                2,
+                1
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 2,
+              "total_score": 5.0
+            },
+            {
+              "ranking": [
+                1,
+                0,
+                2
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 2,
+              "total_score": 5.0
+            },
+            {
+              "ranking": [
+                0,
+                1,
+                2
+              ],
+              "preference_distance": 0,
+              "fitness_distance": 3,
+              "total_score": 6.0
+            }
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 2.0
+        }
+      },
+      {
+        "test_name": "four_candidates",
+        "description": "4つの候補者でのより複雑なケース",
+        "input": {
+          "subjective_preference": [
+            3,
+            2,
+            1,
+            0
+          ],
+          "fitness_scores": [
+            0.9,
+            0.8,
+            0.6,
+            0.7
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 1.0
+        },
+        "expected": {
+          "ranking": [
+            3,
+            2,
+            1,
+            0
+          ],
+          "score": 5.0
+        },
+        "actual": {
+          "ranking": [
+            3,
+            2,
+            1,
+            0
+          ],
+          "score": 5.0
+        },
+        "passed": true,
+        "details": {
+          "best_ranking": [
+            3,
+            2,
+            1,
+            0
+          ],
+          "best_score": 5.0,
+          "all_calculations": [
+            {
+              "ranking": [
+                3,
+                2,
+                1,
+                0
+              ],
+              "preference_distance": 0,
+              "fitness_distance": 5,
+              "total_score": 5.0
+            },
+            {
+              "ranking": [
+                3,
+                1,
+                2,
+                0
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 4,
+              "total_score": 5.0
+            },
+            {
+              "ranking": [
+                3,
+                2,
+                0,
+                1
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 4,
+              "total_score": 5.0
+            },
+            {
+              "ranking": [
+                1,
+                3,
+                2,
+                0
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 3,
+              "total_score": 5.0
+            },
+            {
+              "ranking": [
+                3,
+                0,
+                2,
+                1
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 3,
+              "total_score": 5.0
+            },
+            {
+              "ranking": [
+                3,
+                1,
+                0,
+                2
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 3,
+              "total_score": 5.0
+            },
+            {
+              "ranking": [
+                0,
+                3,
+                2,
+                1
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 2,
+              "total_score": 5.0
+            },
+            {
+              "ranking": [
+                1,
+                3,
+                0,
+                2
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 2,
+              "total_score": 5.0
+            },
+            {
+              "ranking": [
+                3,
+                0,
+                1,
+                2
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 2,
+              "total_score": 5.0
+            },
+            {
+              "ranking": [
+                0,
+                3,
+                1,
+                2
+              ],
+              "preference_distance": 4,
+              "fitness_distance": 1,
+              "total_score": 5.0
+            },
+            {
+              "ranking": [
+                1,
+                0,
+                3,
+                2
+              ],
+              "preference_distance": 4,
+              "fitness_distance": 1,
+              "total_score": 5.0
+            },
+            {
+              "ranking": [
+                0,
+                1,
+                3,
+                2
+              ],
+              "preference_distance": 5,
+              "fitness_distance": 0,
+              "total_score": 5.0
+            },
+            {
+              "ranking": [
+                2,
+                3,
+                1,
+                0
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 6,
+              "total_score": 7.0
+            },
+            {
+              "ranking": [
+                2,
+                1,
+                3,
+                0
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 5,
+              "total_score": 7.0
+            },
+            {
+              "ranking": [
+                2,
+                3,
+                0,
+                1
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 5,
+              "total_score": 7.0
+            },
+            {
+              "ranking": [
+                1,
+                2,
+                3,
+                0
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 4,
+              "total_score": 7.0
+            },
+            {
+              "ranking": [
+                2,
+                0,
+                3,
+                1
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 4,
+              "total_score": 7.0
+            },
+            {
+              "ranking": [
+                2,
+                1,
+                0,
+                3
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 4,
+              "total_score": 7.0
+            },
+            {
+              "ranking": [
+                0,
+                2,
+                3,
+                1
+              ],
+              "preference_distance": 4,
+              "fitness_distance": 3,
+              "total_score": 7.0
+            },
+            {
+              "ranking": [
+                1,
+                2,
+                0,
+                3
+              ],
+              "preference_distance": 4,
+              "fitness_distance": 3,
+              "total_score": 7.0
+            },
+            {
+              "ranking": [
+                2,
+                0,
+                1,
+                3
+              ],
+              "preference_distance": 4,
+              "fitness_distance": 3,
+              "total_score": 7.0
+            },
+            {
+              "ranking": [
+                0,
+                2,
+                1,
+                3
+              ],
+              "preference_distance": 5,
+              "fitness_distance": 2,
+              "total_score": 7.0
+            },
+            {
+              "ranking": [
+                1,
+                0,
+                2,
+                3
+              ],
+              "preference_distance": 5,
+              "fitness_distance": 2,
+              "total_score": 7.0
+            },
+            {
+              "ranking": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "preference_distance": 6,
+              "fitness_distance": 1,
+              "total_score": 7.0
+            }
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 1.0
+        }
+      },
+      {
+        "test_name": "tied_fitness_scores",
+        "description": "同点のフィット度スコアがある場合",
+        "input": {
+          "subjective_preference": [
+            0,
+            1,
+            2
+          ],
+          "fitness_scores": [
+            0.8,
+            0.8,
+            0.6
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 1.0
+        },
+        "expected": {
+          "ranking": [
+            0,
+            1,
+            2
+          ],
+          "score": 1.0
+        },
+        "actual": {
+          "ranking": [
+            0,
+            1,
+            2
+          ],
+          "score": 0.0
+        },
+        "passed": true,
+        "details": {
+          "best_ranking": [
+            0,
+            1,
+            2
+          ],
+          "best_score": 0.0,
+          "all_calculations": [
+            {
+              "ranking": [
+                0,
+                1,
+                2
+              ],
+              "preference_distance": 0,
+              "fitness_distance": 0,
+              "total_score": 0.0
+            },
+            {
+              "ranking": [
+                0,
+                2,
+                1
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 1,
+              "total_score": 2.0
+            },
+            {
+              "ranking": [
+                1,
+                0,
+                2
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 1,
+              "total_score": 2.0
+            },
+            {
+              "ranking": [
+                1,
+                2,
+                0
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 2,
+              "total_score": 4.0
+            },
+            {
+              "ranking": [
+                2,
+                0,
+                1
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 2,
+              "total_score": 4.0
+            },
+            {
+              "ranking": [
+                2,
+                1,
+                0
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 3,
+              "total_score": 6.0
+            }
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 1.0
+        }
+      },
+      {
+        "test_name": "extreme_fitness_difference",
+        "description": "極端なフィット度の差がある場合",
+        "input": {
+          "subjective_preference": [
+            0,
+            1,
+            2
+          ],
+          "fitness_scores": [
+            0.1,
+            0.2,
+            0.9
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 1.0
+        },
+        "expected": {
+          "ranking": [
+            0,
+            1,
+            2
+          ],
+          "score": 3.0
+        },
+        "actual": {
+          "ranking": [
+            0,
+            1,
+            2
+          ],
+          "score": 3.0
+        },
+        "passed": true,
+        "details": {
+          "best_ranking": [
+            0,
+            1,
+            2
+          ],
+          "best_score": 3.0,
+          "all_calculations": [
+            {
+              "ranking": [
+                0,
+                1,
+                2
+              ],
+              "preference_distance": 0,
+              "fitness_distance": 3,
+              "total_score": 3.0
+            },
+            {
+              "ranking": [
+                0,
+                2,
+                1
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 2,
+              "total_score": 3.0
+            },
+            {
+              "ranking": [
+                1,
+                0,
+                2
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 2,
+              "total_score": 3.0
+            },
+            {
+              "ranking": [
+                1,
+                2,
+                0
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 1,
+              "total_score": 3.0
+            },
+            {
+              "ranking": [
+                2,
+                0,
+                1
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 1,
+              "total_score": 3.0
+            },
+            {
+              "ranking": [
+                2,
+                1,
+                0
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 0,
+              "total_score": 3.0
+            }
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 1.0
+        }
+      },
+      {
+        "test_name": "fitness_overrides_preference",
+        "description": "フィット度が主観的選好を上回って結果を変えるケース",
+        "input": {
+          "subjective_preference": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "fitness_scores": [
+            0.1,
+            0.2,
+            0.3,
+            0.9
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 2.0
+        },
+        "expected": {
+          "ranking": [
+            3,
+            2,
+            1,
+            0
+          ],
+          "score": 8.0
+        },
+        "actual": {
+          "ranking": [
+            3,
+            2,
+            1,
+            0
+          ],
+          "score": 6.0
+        },
+        "passed": true,
+        "details": {
+          "best_ranking": [
+            3,
+            2,
+            1,
+            0
+          ],
+          "best_score": 6.0,
+          "all_calculations": [
+            {
+              "ranking": [
+                3,
+                2,
+                1,
+                0
+              ],
+              "preference_distance": 6,
+              "fitness_distance": 0,
+              "total_score": 6.0
+            },
+            {
+              "ranking": [
+                2,
+                3,
+                1,
+                0
+              ],
+              "preference_distance": 5,
+              "fitness_distance": 1,
+              "total_score": 7.0
+            },
+            {
+              "ranking": [
+                3,
+                1,
+                2,
+                0
+              ],
+              "preference_distance": 5,
+              "fitness_distance": 1,
+              "total_score": 7.0
+            },
+            {
+              "ranking": [
+                3,
+                2,
+                0,
+                1
+              ],
+              "preference_distance": 5,
+              "fitness_distance": 1,
+              "total_score": 7.0
+            },
+            {
+              "ranking": [
+                1,
+                3,
+                2,
+                0
+              ],
+              "preference_distance": 4,
+              "fitness_distance": 2,
+              "total_score": 8.0
+            },
+            {
+              "ranking": [
+                2,
+                1,
+                3,
+                0
+              ],
+              "preference_distance": 4,
+              "fitness_distance": 2,
+              "total_score": 8.0
+            },
+            {
+              "ranking": [
+                2,
+                3,
+                0,
+                1
+              ],
+              "preference_distance": 4,
+              "fitness_distance": 2,
+              "total_score": 8.0
+            },
+            {
+              "ranking": [
+                3,
+                0,
+                2,
+                1
+              ],
+              "preference_distance": 4,
+              "fitness_distance": 2,
+              "total_score": 8.0
+            },
+            {
+              "ranking": [
+                3,
+                1,
+                0,
+                2
+              ],
+              "preference_distance": 4,
+              "fitness_distance": 2,
+              "total_score": 8.0
+            },
+            {
+              "ranking": [
+                0,
+                3,
+                2,
+                1
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 3,
+              "total_score": 9.0
+            },
+            {
+              "ranking": [
+                1,
+                2,
+                3,
+                0
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 3,
+              "total_score": 9.0
+            },
+            {
+              "ranking": [
+                1,
+                3,
+                0,
+                2
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 3,
+              "total_score": 9.0
+            },
+            {
+              "ranking": [
+                2,
+                0,
+                3,
+                1
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 3,
+              "total_score": 9.0
+            },
+            {
+              "ranking": [
+                2,
+                1,
+                0,
+                3
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 3,
+              "total_score": 9.0
+            },
+            {
+              "ranking": [
+                3,
+                0,
+                1,
+                2
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 3,
+              "total_score": 9.0
+            },
+            {
+              "ranking": [
+                0,
+                2,
+                3,
+                1
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 4,
+              "total_score": 10.0
+            },
+            {
+              "ranking": [
+                0,
+                3,
+                1,
+                2
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 4,
+              "total_score": 10.0
+            },
+            {
+              "ranking": [
+                1,
+                0,
+                3,
+                2
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 4,
+              "total_score": 10.0
+            },
+            {
+              "ranking": [
+                1,
+                2,
+                0,
+                3
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 4,
+              "total_score": 10.0
+            },
+            {
+              "ranking": [
+                2,
+                0,
+                1,
+                3
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 4,
+              "total_score": 10.0
+            },
+            {
+              "ranking": [
+                0,
+                1,
+                3,
+                2
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 5,
+              "total_score": 11.0
+            },
+            {
+              "ranking": [
+                0,
+                2,
+                1,
+                3
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 5,
+              "total_score": 11.0
+            },
+            {
+              "ranking": [
+                1,
+                0,
+                2,
+                3
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 5,
+              "total_score": 11.0
+            },
+            {
+              "ranking": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "preference_distance": 0,
+              "fitness_distance": 6,
+              "total_score": 12.0
+            }
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 2.0
+        }
+      },
+      {
+        "test_name": "subtle_balance_case",
+        "description": "主観的選好とフィット度の微妙なバランスケース",
+        "input": {
+          "subjective_preference": [
+            0,
+            1,
+            2
+          ],
+          "fitness_scores": [
+            0.3,
+            0.7,
+            0.4
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 1.5
+        },
+        "expected": {
+          "ranking": [
+            1,
+            2,
+            0
+          ],
+          "score": 2.5
+        },
+        "actual": {
+          "ranking": [
+            1,
+            2,
+            0
+          ],
+          "score": 2.0
+        },
+        "passed": true,
+        "details": {
+          "best_ranking": [
+            1,
+            2,
+            0
+          ],
+          "best_score": 2.0,
+          "all_calculations": [
+            {
+              "ranking": [
+                1,
+                2,
+                0
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 0,
+              "total_score": 2.0
+            },
+            {
+              "ranking": [
+                1,
+                0,
+                2
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 1,
+              "total_score": 2.5
+            },
+            {
+              "ranking": [
+                0,
+                1,
+                2
+              ],
+              "preference_distance": 0,
+              "fitness_distance": 2,
+              "total_score": 3.0
+            },
+            {
+              "ranking": [
+                2,
+                1,
+                0
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 1,
+              "total_score": 4.5
+            },
+            {
+              "ranking": [
+                2,
+                0,
+                1
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 2,
+              "total_score": 5.0
+            },
+            {
+              "ranking": [
+                0,
+                2,
+                1
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 3,
+              "total_score": 5.5
+            }
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 1.5
+        }
+      },
+      {
+        "test_name": "strong_fitness_contrast",
+        "description": "非常に強いフィット度コントラストがあるケース",
+        "input": {
+          "subjective_preference": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "fitness_scores": [
+            0.05,
+            0.1,
+            0.15,
+            0.95
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 3.0
+        },
+        "expected": {
+          "ranking": [
+            3,
+            2,
+            1,
+            0
+          ],
+          "score": 6.0
+        },
+        "actual": {
+          "ranking": [
+            3,
+            2,
+            1,
+            0
+          ],
+          "score": 6.0
+        },
+        "passed": true,
+        "details": {
+          "best_ranking": [
+            3,
+            2,
+            1,
+            0
+          ],
+          "best_score": 6.0,
+          "all_calculations": [
+            {
+              "ranking": [
+                3,
+                2,
+                1,
+                0
+              ],
+              "preference_distance": 6,
+              "fitness_distance": 0,
+              "total_score": 6.0
+            },
+            {
+              "ranking": [
+                2,
+                3,
+                1,
+                0
+              ],
+              "preference_distance": 5,
+              "fitness_distance": 1,
+              "total_score": 8.0
+            },
+            {
+              "ranking": [
+                3,
+                1,
+                2,
+                0
+              ],
+              "preference_distance": 5,
+              "fitness_distance": 1,
+              "total_score": 8.0
+            },
+            {
+              "ranking": [
+                3,
+                2,
+                0,
+                1
+              ],
+              "preference_distance": 5,
+              "fitness_distance": 1,
+              "total_score": 8.0
+            },
+            {
+              "ranking": [
+                1,
+                3,
+                2,
+                0
+              ],
+              "preference_distance": 4,
+              "fitness_distance": 2,
+              "total_score": 10.0
+            },
+            {
+              "ranking": [
+                2,
+                1,
+                3,
+                0
+              ],
+              "preference_distance": 4,
+              "fitness_distance": 2,
+              "total_score": 10.0
+            },
+            {
+              "ranking": [
+                2,
+                3,
+                0,
+                1
+              ],
+              "preference_distance": 4,
+              "fitness_distance": 2,
+              "total_score": 10.0
+            },
+            {
+              "ranking": [
+                3,
+                0,
+                2,
+                1
+              ],
+              "preference_distance": 4,
+              "fitness_distance": 2,
+              "total_score": 10.0
+            },
+            {
+              "ranking": [
+                3,
+                1,
+                0,
+                2
+              ],
+              "preference_distance": 4,
+              "fitness_distance": 2,
+              "total_score": 10.0
+            },
+            {
+              "ranking": [
+                0,
+                3,
+                2,
+                1
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 3,
+              "total_score": 12.0
+            },
+            {
+              "ranking": [
+                1,
+                2,
+                3,
+                0
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 3,
+              "total_score": 12.0
+            },
+            {
+              "ranking": [
+                1,
+                3,
+                0,
+                2
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 3,
+              "total_score": 12.0
+            },
+            {
+              "ranking": [
+                2,
+                0,
+                3,
+                1
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 3,
+              "total_score": 12.0
+            },
+            {
+              "ranking": [
+                2,
+                1,
+                0,
+                3
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 3,
+              "total_score": 12.0
+            },
+            {
+              "ranking": [
+                3,
+                0,
+                1,
+                2
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 3,
+              "total_score": 12.0
+            },
+            {
+              "ranking": [
+                0,
+                2,
+                3,
+                1
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 4,
+              "total_score": 14.0
+            },
+            {
+              "ranking": [
+                0,
+                3,
+                1,
+                2
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 4,
+              "total_score": 14.0
+            },
+            {
+              "ranking": [
+                1,
+                0,
+                3,
+                2
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 4,
+              "total_score": 14.0
+            },
+            {
+              "ranking": [
+                1,
+                2,
+                0,
+                3
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 4,
+              "total_score": 14.0
+            },
+            {
+              "ranking": [
+                2,
+                0,
+                1,
+                3
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 4,
+              "total_score": 14.0
+            },
+            {
+              "ranking": [
+                0,
+                1,
+                3,
+                2
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 5,
+              "total_score": 16.0
+            },
+            {
+              "ranking": [
+                0,
+                2,
+                1,
+                3
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 5,
+              "total_score": 16.0
+            },
+            {
+              "ranking": [
+                1,
+                0,
+                2,
+                3
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 5,
+              "total_score": 16.0
+            },
+            {
+              "ranking": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "preference_distance": 0,
+              "fitness_distance": 6,
+              "total_score": 18.0
+            }
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 3.0
+        }
+      },
+      {
+        "test_name": "preference_only",
+        "description": "主観的選好のみを考慮（フィット度重み=0）",
+        "input": {
+          "subjective_preference": [
+            0,
+            1,
+            2
+          ],
+          "fitness_scores": [
+            0.3,
+            0.5,
+            0.9
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 0.0
+        },
+        "expected": {
+          "ranking": [
+            0,
+            1,
+            2
+          ],
+          "score": 0.0
+        },
+        "actual": {
+          "ranking": [
+            0,
+            1,
+            2
+          ],
+          "score": 0.0
+        },
+        "passed": true,
+        "details": {
+          "best_ranking": [
+            0,
+            1,
+            2
+          ],
+          "best_score": 0.0,
+          "all_calculations": [
+            {
+              "ranking": [
+                0,
+                1,
+                2
+              ],
+              "preference_distance": 0,
+              "fitness_distance": 3,
+              "total_score": 0.0
+            },
+            {
+              "ranking": [
+                0,
+                2,
+                1
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 2,
+              "total_score": 1.0
+            },
+            {
+              "ranking": [
+                1,
+                0,
+                2
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 2,
+              "total_score": 1.0
+            },
+            {
+              "ranking": [
+                1,
+                2,
+                0
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 1,
+              "total_score": 2.0
+            },
+            {
+              "ranking": [
+                2,
+                0,
+                1
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 1,
+              "total_score": 2.0
+            },
+            {
+              "ranking": [
+                2,
+                1,
+                0
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 0,
+              "total_score": 3.0
+            }
+          ],
+          "preference_weight": 1.0,
+          "fitness_weight": 0.0
+        }
+      },
+      {
+        "test_name": "fitness_only",
+        "description": "客観的フィット度のみを考慮（選好重み=0）",
+        "input": {
+          "subjective_preference": [
+            0,
+            1,
+            2
+          ],
+          "fitness_scores": [
+            0.3,
+            0.5,
+            0.9
+          ],
+          "preference_weight": 0.0,
+          "fitness_weight": 1.0
+        },
+        "expected": {
+          "ranking": [
+            2,
+            1,
+            0
+          ],
+          "score": 0.0
+        },
+        "actual": {
+          "ranking": [
+            2,
+            1,
+            0
+          ],
+          "score": 0.0
+        },
+        "passed": true,
+        "details": {
+          "best_ranking": [
+            2,
+            1,
+            0
+          ],
+          "best_score": 0.0,
+          "all_calculations": [
+            {
+              "ranking": [
+                2,
+                1,
+                0
+              ],
+              "preference_distance": 3,
+              "fitness_distance": 0,
+              "total_score": 0.0
+            },
+            {
+              "ranking": [
+                1,
+                2,
+                0
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 1,
+              "total_score": 1.0
+            },
+            {
+              "ranking": [
+                2,
+                0,
+                1
+              ],
+              "preference_distance": 2,
+              "fitness_distance": 1,
+              "total_score": 1.0
+            },
+            {
+              "ranking": [
+                0,
+                2,
+                1
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 2,
+              "total_score": 2.0
+            },
+            {
+              "ranking": [
+                1,
+                0,
+                2
+              ],
+              "preference_distance": 1,
+              "fitness_distance": 2,
+              "total_score": 2.0
+            },
+            {
+              "ranking": [
+                0,
+                1,
+                2
+              ],
+              "preference_distance": 0,
+              "fitness_distance": 3,
+              "total_score": 3.0
+            }
+          ],
+          "preference_weight": 0.0,
+          "fitness_weight": 1.0
+        }
+      }
+    ]
+  },
+  "deferred_acceptance": {
+    "total_tests": 10,
+    "passed_tests": 10,
+    "failed_tests": 0,
+    "pass_rate": 100.0,
+    "results": [
+      {
+        "test_name": "basic_paper_example",
+        "description": "論文で使用された基本例",
+        "input": {
+          "care_recipients": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "caregivers": [
+            1,
+            2,
+            3
+          ],
+          "recipient_preferences": {
+            "4": [
+              1,
+              3,
+              2
+            ],
+            "5": [
+              2,
+              1,
+              3
+            ],
+            "6": [
+              2,
+              1,
+              3
+            ],
+            "7": [
+              3,
+              1,
+              2
+            ]
+          },
+          "caregiver_preferences": {
+            "1": [
+              4,
+              7,
+              5,
+              6
+            ],
+            "2": [
+              6,
+              5,
+              4,
+              7
+            ],
+            "3": [
+              7,
+              4,
+              5,
+              6
+            ]
+          },
+          "caregiver_capacities": {
+            "1": 1,
+            "2": 1,
+            "3": 2
+          }
+        },
+        "expected": {
+          "matches": {
+            "4": 1,
+            "6": 2,
+            "7": 3
+          },
+          "unmatched": [
+            5
+          ],
+          "is_stable": true
+        },
+        "actual": {
+          "matches": {
+            "4": 1,
+            "6": 2,
+            "7": 3
+          },
+          "unmatched": [
+            5
+          ],
+          "is_stable": true,
+          "blocking_pairs": []
+        },
+        "passed": true,
+        "sub_results": {
+          "matches_correct": true,
+          "unmatched_correct": true,
+          "stability_correct": true
+        },
+        "details": {
+          "final_matches": {
+            "4": 1,
+            "6": 2,
+            "7": 3
+          },
+          "history": [
+            {
+              "step": 1,
+              "unmatched_recipients": [
+                4,
+                5,
+                6,
+                7
+              ],
+              "current_proposals": {
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0
+              },
+              "tentative_matches": {
+                "1": [],
+                "2": [],
+                "3": []
+              },
+              "actions": [
+                "被介護者4がケアワーカー1に提案",
+                "被介護者5がケアワーカー2に提案",
+                "被介護者6がケアワーカー2に提案",
+                "被介護者7がケアワーカー3に提案",
+                "ケアワーカー1が被介護者4を仮受入",
+                "ケアワーカー2が被介護者5を仮受入",
+                "ケアワーカー2が被介護者5を拒否",
+                "ケアワーカー2が[6]を仮受入",
+                "ケアワーカー3が被介護者7を仮受入"
+              ]
+            },
+            {
+              "step": 2,
+              "unmatched_recipients": [
+                5
+              ],
+              "current_proposals": {
+                "4": 1,
+                "5": 1,
+                "6": 1,
+                "7": 1
+              },
+              "tentative_matches": {
+                "1": [
+                  4
+                ],
+                "2": [
+                  6
+                ],
+                "3": [
+                  7
+                ]
+              },
+              "actions": [
+                "被介護者5がケアワーカー1に提案",
+                "ケアワーカー1が被介護者5を拒否",
+                "ケアワーカー1が[4]を仮受入"
+              ]
+            }
+          ],
+          "unmatched_recipients": [
+            5
+          ],
+          "caregiver_utilization": {
+            "1": 1,
+            "2": 1,
+            "3": 1
+          }
+        }
+      },
+      {
+        "test_name": "balanced_case",
+        "description": "被介護者数とケアワーカー総容量が一致するケース",
+        "input": {
+          "care_recipients": [
+            1,
+            2,
+            3
+          ],
+          "caregivers": [
+            10,
+            20,
+            30
+          ],
+          "recipient_preferences": {
+            "1": [
+              10,
+              20,
+              30
+            ],
+            "2": [
+              20,
+              10,
+              30
+            ],
+            "3": [
+              30,
+              20,
+              10
+            ]
+          },
+          "caregiver_preferences": {
+            "10": [
+              1,
+              2,
+              3
+            ],
+            "20": [
+              2,
+              1,
+              3
+            ],
+            "30": [
+              3,
+              1,
+              2
+            ]
+          },
+          "caregiver_capacities": {
+            "10": 1,
+            "20": 1,
+            "30": 1
+          }
+        },
+        "expected": {
+          "matches": {
+            "1": 10,
+            "2": 20,
+            "3": 30
+          },
+          "unmatched": [],
+          "is_stable": true
+        },
+        "actual": {
+          "matches": {
+            "1": 10,
+            "2": 20,
+            "3": 30
+          },
+          "unmatched": [],
+          "is_stable": true,
+          "blocking_pairs": []
+        },
+        "passed": true,
+        "sub_results": {
+          "matches_correct": true,
+          "unmatched_correct": true,
+          "stability_correct": true
+        },
+        "details": {
+          "final_matches": {
+            "1": 10,
+            "2": 20,
+            "3": 30
+          },
+          "history": [
+            {
+              "step": 1,
+              "unmatched_recipients": [
+                1,
+                2,
+                3
+              ],
+              "current_proposals": {
+                "1": 0,
+                "2": 0,
+                "3": 0
+              },
+              "tentative_matches": {
+                "10": [],
+                "20": [],
+                "30": []
+              },
+              "actions": [
+                "被介護者1がケアワーカー10に提案",
+                "被介護者2がケアワーカー20に提案",
+                "被介護者3がケアワーカー30に提案",
+                "ケアワーカー10が被介護者1を仮受入",
+                "ケアワーカー20が被介護者2を仮受入",
+                "ケアワーカー30が被介護者3を仮受入"
+              ]
+            }
+          ],
+          "unmatched_recipients": [],
+          "caregiver_utilization": {
+            "10": 1,
+            "20": 1,
+            "30": 1
+          }
+        }
+      },
+      {
+        "test_name": "insufficient_capacity",
+        "description": "ケアワーカーの総容量が不足し未マッチが発生するケース",
+        "input": {
+          "care_recipients": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "caregivers": [
+            10,
+            20
+          ],
+          "recipient_preferences": {
+            "1": [
+              10,
+              20
+            ],
+            "2": [
+              10,
+              20
+            ],
+            "3": [
+              20,
+              10
+            ],
+            "4": [
+              20,
+              10
+            ]
+          },
+          "caregiver_preferences": {
+            "10": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "20": [
+              3,
+              4,
+              1,
+              2
+            ]
+          },
+          "caregiver_capacities": {
+            "10": 1,
+            "20": 2
+          }
+        },
+        "expected": {
+          "matches": {
+            "1": 10,
+            "3": 20,
+            "4": 20
+          },
+          "unmatched": [
+            2
+          ],
+          "is_stable": true
+        },
+        "actual": {
+          "matches": {
+            "1": 10,
+            "3": 20,
+            "4": 20
+          },
+          "unmatched": [
+            2
+          ],
+          "is_stable": true,
+          "blocking_pairs": []
+        },
+        "passed": true,
+        "sub_results": {
+          "matches_correct": true,
+          "unmatched_correct": true,
+          "stability_correct": true
+        },
+        "details": {
+          "final_matches": {
+            "1": 10,
+            "3": 20,
+            "4": 20
+          },
+          "history": [
+            {
+              "step": 1,
+              "unmatched_recipients": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "current_proposals": {
+                "1": 0,
+                "2": 0,
+                "3": 0,
+                "4": 0
+              },
+              "tentative_matches": {
+                "10": [],
+                "20": []
+              },
+              "actions": [
+                "被介護者1がケアワーカー10に提案",
+                "被介護者2がケアワーカー10に提案",
+                "被介護者3がケアワーカー20に提案",
+                "被介護者4がケアワーカー20に提案",
+                "ケアワーカー10が被介護者1を仮受入",
+                "ケアワーカー10が被介護者2を拒否",
+                "ケアワーカー10が[1]を仮受入",
+                "ケアワーカー20が被介護者3を仮受入",
+                "ケアワーカー20が被介護者4を仮受入"
+              ]
+            }
+          ],
+          "unmatched_recipients": [
+            2
+          ],
+          "caregiver_utilization": {
+            "10": 1,
+            "20": 2
+          }
+        }
+      },
+      {
+        "test_name": "high_capacity_caregiver",
+        "description": "1人のケアワーカーが大容量を持つケース",
+        "input": {
+          "care_recipients": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "caregivers": [
+            10,
+            20
+          ],
+          "recipient_preferences": {
+            "1": [
+              10,
+              20
+            ],
+            "2": [
+              10,
+              20
+            ],
+            "3": [
+              10,
+              20
+            ],
+            "4": [
+              20,
+              10
+            ]
+          },
+          "caregiver_preferences": {
+            "10": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "20": [
+              4,
+              3,
+              2,
+              1
+            ]
+          },
+          "caregiver_capacities": {
+            "10": 3,
+            "20": 1
+          }
+        },
+        "expected": {
+          "matches": {
+            "1": 10,
+            "2": 10,
+            "3": 10,
+            "4": 20
+          },
+          "unmatched": [],
+          "is_stable": true
+        },
+        "actual": {
+          "matches": {
+            "1": 10,
+            "2": 10,
+            "3": 10,
+            "4": 20
+          },
+          "unmatched": [],
+          "is_stable": true,
+          "blocking_pairs": []
+        },
+        "passed": true,
+        "sub_results": {
+          "matches_correct": true,
+          "unmatched_correct": true,
+          "stability_correct": true
+        },
+        "details": {
+          "final_matches": {
+            "1": 10,
+            "2": 10,
+            "3": 10,
+            "4": 20
+          },
+          "history": [
+            {
+              "step": 1,
+              "unmatched_recipients": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "current_proposals": {
+                "1": 0,
+                "2": 0,
+                "3": 0,
+                "4": 0
+              },
+              "tentative_matches": {
+                "10": [],
+                "20": []
+              },
+              "actions": [
+                "被介護者1がケアワーカー10に提案",
+                "被介護者2がケアワーカー10に提案",
+                "被介護者3がケアワーカー10に提案",
+                "被介護者4がケアワーカー20に提案",
+                "ケアワーカー10が被介護者1を仮受入",
+                "ケアワーカー10が被介護者2を仮受入",
+                "ケアワーカー10が被介護者3を仮受入",
+                "ケアワーカー20が被介護者4を仮受入"
+              ]
+            }
+          ],
+          "unmatched_recipients": [],
+          "caregiver_utilization": {
+            "10": 3,
+            "20": 1
+          }
+        }
+      },
+      {
+        "test_name": "identical_preferences",
+        "description": "同じ選好を持つ被介護者がいるケース",
+        "input": {
+          "care_recipients": [
+            1,
+            2,
+            3
+          ],
+          "caregivers": [
+            10,
+            20
+          ],
+          "recipient_preferences": {
+            "1": [
+              10,
+              20
+            ],
+            "2": [
+              10,
+              20
+            ],
+            "3": [
+              10,
+              20
+            ]
+          },
+          "caregiver_preferences": {
+            "10": [
+              1,
+              2,
+              3
+            ],
+            "20": [
+              3,
+              2,
+              1
+            ]
+          },
+          "caregiver_capacities": {
+            "10": 1,
+            "20": 1
+          }
+        },
+        "expected": {
+          "matches": {
+            "1": 10
+          },
+          "unmatched": [
+            2,
+            3
+          ],
+          "is_stable": true
+        },
+        "actual": {
+          "matches": {
+            "1": 10
+          },
+          "unmatched": [
+            2,
+            3
+          ],
+          "is_stable": true,
+          "blocking_pairs": []
+        },
+        "passed": true,
+        "sub_results": {
+          "matches_correct": true,
+          "unmatched_correct": true,
+          "stability_correct": true
+        },
+        "details": {
+          "final_matches": {
+            "1": 10
+          },
+          "history": [
+            {
+              "step": 1,
+              "unmatched_recipients": [
+                1,
+                2,
+                3
+              ],
+              "current_proposals": {
+                "1": 0,
+                "2": 0,
+                "3": 0
+              },
+              "tentative_matches": {
+                "10": [],
+                "20": []
+              },
+              "actions": [
+                "被介護者1がケアワーカー10に提案",
+                "被介護者2がケアワーカー10に提案",
+                "被介護者3がケアワーカー10に提案",
+                "ケアワーカー10が被介護者1を仮受入",
+                "ケアワーカー10が被介護者2を拒否",
+                "ケアワーカー10が[1]を仮受入",
+                "ケアワーカー10が被介護者3を拒否",
+                "ケアワーカー10が[1]を仮受入"
+              ]
+            }
+          ],
+          "unmatched_recipients": [
+            2,
+            3
+          ],
+          "caregiver_utilization": {
+            "10": 1,
+            "20": 0
+          }
+        }
+      },
+      {
+        "test_name": "unpopular_caregiver",
+        "description": "誰からも最優先されないケアワーカーがいるケース",
+        "input": {
+          "care_recipients": [
+            1,
+            2
+          ],
+          "caregivers": [
+            10,
+            20,
+            30
+          ],
+          "recipient_preferences": {
+            "1": [
+              10,
+              20,
+              30
+            ],
+            "2": [
+              20,
+              10,
+              30
+            ]
+          },
+          "caregiver_preferences": {
+            "10": [
+              1,
+              2
+            ],
+            "20": [
+              2,
+              1
+            ],
+            "30": [
+              1,
+              2
+            ]
+          },
+          "caregiver_capacities": {
+            "10": 1,
+            "20": 1,
+            "30": 1
+          }
+        },
+        "expected": {
+          "matches": {
+            "1": 10,
+            "2": 20
+          },
+          "unmatched": [],
+          "is_stable": true
+        },
+        "actual": {
+          "matches": {
+            "1": 10,
+            "2": 20
+          },
+          "unmatched": [],
+          "is_stable": true,
+          "blocking_pairs": []
+        },
+        "passed": true,
+        "sub_results": {
+          "matches_correct": true,
+          "unmatched_correct": true,
+          "stability_correct": true
+        },
+        "details": {
+          "final_matches": {
+            "1": 10,
+            "2": 20
+          },
+          "history": [
+            {
+              "step": 1,
+              "unmatched_recipients": [
+                1,
+                2
+              ],
+              "current_proposals": {
+                "1": 0,
+                "2": 0
+              },
+              "tentative_matches": {
+                "10": [],
+                "20": [],
+                "30": []
+              },
+              "actions": [
+                "被介護者1がケアワーカー10に提案",
+                "被介護者2がケアワーカー20に提案",
+                "ケアワーカー10が被介護者1を仮受入",
+                "ケアワーカー20が被介護者2を仮受入"
+              ]
+            }
+          ],
+          "unmatched_recipients": [],
+          "caregiver_utilization": {
+            "10": 1,
+            "20": 1,
+            "30": 0
+          }
+        }
+      },
+      {
+        "test_name": "circular_preferences",
+        "description": "循環的な選好構造があるケース",
+        "input": {
+          "care_recipients": [
+            1,
+            2,
+            3
+          ],
+          "caregivers": [
+            10,
+            20,
+            30
+          ],
+          "recipient_preferences": {
+            "1": [
+              10,
+              20,
+              30
+            ],
+            "2": [
+              20,
+              30,
+              10
+            ],
+            "3": [
+              30,
+              10,
+              20
+            ]
+          },
+          "caregiver_preferences": {
+            "10": [
+              2,
+              3,
+              1
+            ],
+            "20": [
+              3,
+              1,
+              2
+            ],
+            "30": [
+              1,
+              2,
+              3
+            ]
+          },
+          "caregiver_capacities": {
+            "10": 1,
+            "20": 1,
+            "30": 1
+          }
+        },
+        "expected": {
+          "matches": {
+            "1": 10,
+            "2": 20,
+            "3": 30
+          },
+          "unmatched": [],
+          "is_stable": true
+        },
+        "actual": {
+          "matches": {
+            "1": 10,
+            "2": 20,
+            "3": 30
+          },
+          "unmatched": [],
+          "is_stable": true,
+          "blocking_pairs": []
+        },
+        "passed": true,
+        "sub_results": {
+          "matches_correct": true,
+          "unmatched_correct": true,
+          "stability_correct": true
+        },
+        "details": {
+          "final_matches": {
+            "1": 10,
+            "2": 20,
+            "3": 30
+          },
+          "history": [
+            {
+              "step": 1,
+              "unmatched_recipients": [
+                1,
+                2,
+                3
+              ],
+              "current_proposals": {
+                "1": 0,
+                "2": 0,
+                "3": 0
+              },
+              "tentative_matches": {
+                "10": [],
+                "20": [],
+                "30": []
+              },
+              "actions": [
+                "被介護者1がケアワーカー10に提案",
+                "被介護者2がケアワーカー20に提案",
+                "被介護者3がケアワーカー30に提案",
+                "ケアワーカー10が被介護者1を仮受入",
+                "ケアワーカー20が被介護者2を仮受入",
+                "ケアワーカー30が被介護者3を仮受入"
+              ]
+            }
+          ],
+          "unmatched_recipients": [],
+          "caregiver_utilization": {
+            "10": 1,
+            "20": 1,
+            "30": 1
+          }
+        }
+      },
+      {
+        "test_name": "single_caregiver",
+        "description": "ケアワーカーが1人だけのケース",
+        "input": {
+          "care_recipients": [
+            1,
+            2,
+            3
+          ],
+          "caregivers": [
+            10
+          ],
+          "recipient_preferences": {
+            "1": [
+              10
+            ],
+            "2": [
+              10
+            ],
+            "3": [
+              10
+            ]
+          },
+          "caregiver_preferences": {
+            "10": [
+              2,
+              1,
+              3
+            ]
+          },
+          "caregiver_capacities": {
+            "10": 2
+          }
+        },
+        "expected": {
+          "matches": {
+            "2": 10,
+            "1": 10
+          },
+          "unmatched": [
+            3
+          ],
+          "is_stable": true
+        },
+        "actual": {
+          "matches": {
+            "2": 10,
+            "1": 10
+          },
+          "unmatched": [
+            3
+          ],
+          "is_stable": true,
+          "blocking_pairs": []
+        },
+        "passed": true,
+        "sub_results": {
+          "matches_correct": true,
+          "unmatched_correct": true,
+          "stability_correct": true
+        },
+        "details": {
+          "final_matches": {
+            "2": 10,
+            "1": 10
+          },
+          "history": [
+            {
+              "step": 1,
+              "unmatched_recipients": [
+                1,
+                2,
+                3
+              ],
+              "current_proposals": {
+                "1": 0,
+                "2": 0,
+                "3": 0
+              },
+              "tentative_matches": {
+                "10": []
+              },
+              "actions": [
+                "被介護者1がケアワーカー10に提案",
+                "被介護者2がケアワーカー10に提案",
+                "被介護者3がケアワーカー10に提案",
+                "ケアワーカー10が被介護者1を仮受入",
+                "ケアワーカー10が被介護者2を仮受入",
+                "ケアワーカー10が被介護者3を拒否",
+                "ケアワーカー10が[2, 1]を仮受入"
+              ]
+            }
+          ],
+          "unmatched_recipients": [
+            3
+          ],
+          "caregiver_utilization": {
+            "10": 2
+          }
+        }
+      },
+      {
+        "test_name": "empty_preferences",
+        "description": "一部の参加者が空の選好リストを持つケース",
+        "input": {
+          "care_recipients": [
+            1,
+            2
+          ],
+          "caregivers": [
+            10,
+            20
+          ],
+          "recipient_preferences": {
+            "1": [
+              10,
+              20
+            ],
+            "2": []
+          },
+          "caregiver_preferences": {
+            "10": [
+              1,
+              2
+            ],
+            "20": [
+              1,
+              2
+            ]
+          },
+          "caregiver_capacities": {
+            "10": 1,
+            "20": 1
+          }
+        },
+        "expected": {
+          "matches": {
+            "1": 10
+          },
+          "unmatched": [
+            2
+          ],
+          "is_stable": true
+        },
+        "actual": {
+          "matches": {
+            "1": 10
+          },
+          "unmatched": [
+            2
+          ],
+          "is_stable": true,
+          "blocking_pairs": []
+        },
+        "passed": true,
+        "sub_results": {
+          "matches_correct": true,
+          "unmatched_correct": true,
+          "stability_correct": true
+        },
+        "details": {
+          "final_matches": {
+            "1": 10
+          },
+          "history": [
+            {
+              "step": 1,
+              "unmatched_recipients": [
+                1,
+                2
+              ],
+              "current_proposals": {
+                "1": 0,
+                "2": 0
+              },
+              "tentative_matches": {
+                "10": [],
+                "20": []
+              },
+              "actions": [
+                "被介護者1がケアワーカー10に提案",
+                "被介護者2は提案先がないため未マッチ確定",
+                "ケアワーカー10が被介護者1を仮受入"
+              ]
+            }
+          ],
+          "unmatched_recipients": [
+            2
+          ],
+          "caregiver_utilization": {
+            "10": 1,
+            "20": 0
+          }
+        }
+      },
+      {
+        "test_name": "large_scale",
+        "description": "より大規模なケース（10人の被介護者、5人のケアワーカー）",
+        "input": {
+          "care_recipients": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "caregivers": [
+            101,
+            102,
+            103,
+            104,
+            105
+          ],
+          "recipient_preferences": {
+            "1": [
+              101,
+              102,
+              103,
+              104,
+              105
+            ],
+            "2": [
+              102,
+              101,
+              103,
+              104,
+              105
+            ],
+            "3": [
+              103,
+              102,
+              101,
+              104,
+              105
+            ],
+            "4": [
+              104,
+              103,
+              102,
+              101,
+              105
+            ],
+            "5": [
+              105,
+              104,
+              103,
+              102,
+              101
+            ],
+            "6": [
+              101,
+              105,
+              104,
+              103,
+              102
+            ],
+            "7": [
+              102,
+              101,
+              105,
+              104,
+              103
+            ],
+            "8": [
+              103,
+              102,
+              101,
+              105,
+              104
+            ],
+            "9": [
+              104,
+              103,
+              102,
+              101,
+              105
+            ],
+            "10": [
+              105,
+              104,
+              103,
+              102,
+              101
+            ]
+          },
+          "caregiver_preferences": {
+            "101": [
+              1,
+              6,
+              2,
+              7,
+              3,
+              8,
+              4,
+              9,
+              5,
+              10
+            ],
+            "102": [
+              2,
+              7,
+              1,
+              8,
+              3,
+              9,
+              4,
+              10,
+              5,
+              6
+            ],
+            "103": [
+              3,
+              8,
+              4,
+              9,
+              1,
+              6,
+              2,
+              7,
+              5,
+              10
+            ],
+            "104": [
+              4,
+              9,
+              3,
+              10,
+              2,
+              7,
+              1,
+              8,
+              6,
+              5
+            ],
+            "105": [
+              5,
+              10,
+              6,
+              1,
+              7,
+              2,
+              8,
+              3,
+              9,
+              4
+            ]
+          },
+          "caregiver_capacities": {
+            "101": 2,
+            "102": 2,
+            "103": 2,
+            "104": 2,
+            "105": 2
+          }
+        },
+        "expected": {
+          "matches": {
+            "1": 101,
+            "6": 101,
+            "2": 102,
+            "7": 102,
+            "3": 103,
+            "8": 103,
+            "4": 104,
+            "9": 104,
+            "5": 105,
+            "10": 105
+          },
+          "unmatched": [],
+          "is_stable": true
+        },
+        "actual": {
+          "matches": {
+            "1": 101,
+            "6": 101,
+            "2": 102,
+            "7": 102,
+            "3": 103,
+            "8": 103,
+            "4": 104,
+            "9": 104,
+            "5": 105,
+            "10": 105
+          },
+          "unmatched": [],
+          "is_stable": true,
+          "blocking_pairs": []
+        },
+        "passed": true,
+        "sub_results": {
+          "matches_correct": true,
+          "unmatched_correct": true,
+          "stability_correct": true
+        },
+        "details": {
+          "final_matches": {
+            "1": 101,
+            "6": 101,
+            "2": 102,
+            "7": 102,
+            "3": 103,
+            "8": 103,
+            "4": 104,
+            "9": 104,
+            "5": 105,
+            "10": 105
+          },
+          "history": [
+            {
+              "step": 1,
+              "unmatched_recipients": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ],
+              "current_proposals": {
+                "1": 0,
+                "2": 0,
+                "3": 0,
+                "4": 0,
+                "5": 0,
+                "6": 0,
+                "7": 0,
+                "8": 0,
+                "9": 0,
+                "10": 0
+              },
+              "tentative_matches": {
+                "101": [],
+                "102": [],
+                "103": [],
+                "104": [],
+                "105": []
+              },
+              "actions": [
+                "被介護者1がケアワーカー101に提案",
+                "被介護者2がケアワーカー102に提案",
+                "被介護者3がケアワーカー103に提案",
+                "被介護者4がケアワーカー104に提案",
+                "被介護者5がケアワーカー105に提案",
+                "被介護者6がケアワーカー101に提案",
+                "被介護者7がケアワーカー102に提案",
+                "被介護者8がケアワーカー103に提案",
+                "被介護者9がケアワーカー104に提案",
+                "被介護者10がケアワーカー105に提案",
+                "ケアワーカー101が被介護者1を仮受入",
+                "ケアワーカー102が被介護者2を仮受入",
+                "ケアワーカー103が被介護者3を仮受入",
+                "ケアワーカー104が被介護者4を仮受入",
+                "ケアワーカー105が被介護者5を仮受入",
+                "ケアワーカー101が被介護者6を仮受入",
+                "ケアワーカー102が被介護者7を仮受入",
+                "ケアワーカー103が被介護者8を仮受入",
+                "ケアワーカー104が被介護者9を仮受入",
+                "ケアワーカー105が被介護者10を仮受入"
+              ]
+            }
+          ],
+          "unmatched_recipients": [],
+          "caregiver_utilization": {
+            "101": 2,
+            "102": 2,
+            "103": 2,
+            "104": 2,
+            "105": 2
+          }
+        }
+      }
+    ]
+  },
+  "overall_summary": {
+    "total_tests": 23,
+    "total_passed": 23,
+    "total_failed": 0,
+    "overall_pass_rate": 100.0
+  }
+}

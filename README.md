@@ -9,121 +9,227 @@
 1. **拡張版Kemenyルール**: 主観的選好と客観的フィット度を統合した選好集約
 2. **Deferred Acceptance (DA) アルゴリズム**: 安定マッチングの生成
 
+## 📁 プロジェクト構造
+
+```
+kemeny-extended-aggregator/
+├── algorithms/              # 🧮 核心アルゴリズム
+│   ├── extended_kemeny_rule.py      # 拡張版Kemenyルール実装
+│   ├── deferred_acceptance.py       # DAアルゴリズム実装
+│   ├── care_matching_system.py      # 統合マッチングシステム
+│   └── csv_matching_system.py       # CSV対応マッチングシステム
+├── tests/                   # 🧪 テスト・検証
+│   ├── test_data_extended_kemeny.py # 拡張版Kemenyルールテスト
+│   ├── test_data_da.py              # DAアルゴリズムテスト
+│   └── integrated_test_runner.py    # 統合テストランナー
+├── data/                    # 📊 入力データ
+│   ├── csv_input_handler.py         # CSV入力処理
+│   ├── care_receiver_*.csv          # 被介護者データ
+│   └── care_worker_*.csv            # ケアワーカーデータ
+├── scripts/                 # 🔧 ユーティリティスクリプト
+│   ├── generate_test_report.py      # PDFレポート生成
+│   ├── generate_excel_report.py     # Excelレポート生成
+│   └── run_organized_tests.py       # 整理後テスト実行
+├── results/                 # 📈 実行結果・出力
+│   ├── integrated_test_results.json # 統合テスト結果
+│   ├── *_test_results.csv          # CSV形式テスト結果
+│   └── matching_results.json       # マッチング結果
+├── reports/                 # 📄 生成レポート
+│   ├── test_results_report.pdf     # PDFテストレポート
+│   └── detailed_test_results.xlsx  # Excel詳細レポート
+├── docs/                    # 📚 ドキュメント
+│   ├── README_BLACKBOX_TESTS.md    # テスト使用方法
+│   ├── CSV_INPUT_GUIDE.md          # CSV入力ガイド
+│   ├── algorithm_flowchart.md      # アルゴリズムフローチャート
+│   └── TEST_REPORT_SUMMARY.md      # テスト結果サマリー
+├── thesis/                  # 🎓 卒業論文関連
+│   ├── 卒業論文.pdf                # 卒業論文本体
+│   ├── 卒業論文_発表資料.pptx       # 発表スライド
+│   └── 卒業論文_発表資料.md         # 発表資料マークダウン
+└── powerpoint-to-markdown/  # 🔄 変換ツール
+```
+
 ## 🚀 主な機能
 
-### ✨ 核心アルゴリズム
-- **拡張版Kemenyルール** (`extended_kemeny_rule.py`): 重み付きKemeny距離による選好統合
-- **DAアルゴリズム** (`deferred_acceptance.py`): 被介護者最適な安定マッチング
-- **統合システム** (`care_matching_system.py`): 完全なマッチングパイプライン
+### ✨ 核心アルゴリズム (`algorithms/`)
+- **拡張版Kemenyルール**: 重み付きKemeny距離による選好統合
+- **DAアルゴリズム**: 被介護者最適な安定マッチング
+- **統合システム**: 完全なマッチングパイプライン
+- **CSV対応システム**: 表形式データ完全対応
 
-### 📊 CSV入力機能
-- **CSV入力処理** (`csv_input_handler.py`): 表形式データの読み込み
-- **CSV対応システム** (`csv_matching_system.py`): CSV入力完全対応
+### 📊 データ処理 (`data/`)
+- **CSV入力処理**: 表形式データの読み込み・検証
 - **データ整合性チェック**: 自動的なデータ検証
-- **サンプルファイル生成**: テスト用CSVの自動作成
+- **サンプルデータ**: テスト用CSVファイル群
+- **多形式サポート**: 主観的選好・客観的フィット度・容量データ
 
-### 📈 分析・可視化
-- **満足度分析**: マッチング品質の定量評価
-- **安定性チェック**: ブロッキングペアの検出
-- **フローチャート** (`algorithm_flowchart.md`): アルゴリズムの視覚化
+### 🧪 テスト・検証 (`tests/`)
+- **包括的テストスイート**: 20個のテストケース（100%成功率）
+- **ブラックボックステスト**: アルゴリズム動作の完全検証
+- **統合テストランナー**: 一括テスト実行・レポート機能
 - **詳細ログ**: 計算過程の完全な記録
 
-## 📋 必要なファイル
-
-### CSV入力ファイル (5つのファイルが必要)
-
-1. `care_receiver_subjective_preferences.csv` - 被介護者の主観的選好
-2. `care_receiver_objective_fitness.csv` - 被介護者の客観的フィット度  
-3. `care_worker_subjective_preferences.csv` - ケアワーカーの主観的選好
-4. `care_worker_objective_fitness.csv` - ケアワーカーの客観的フィット度
-5. `care_worker_capacity.csv` - ケアワーカーの容量情報
-
-詳細な形式については [`CSV_INPUT_GUIDE.md`](CSV_INPUT_GUIDE.md) をご覧ください。
+### 📈 レポート・分析 (`reports/`, `results/`)
+- **PDF/Excelレポート**: 包括的なテスト結果レポート
+- **満足度分析**: マッチング品質の定量評価
+- **安定性チェック**: ブロッキングペアの検出
+- **多形式出力**: JSON, CSV, PDF, Excel対応
 
 ## 🏃‍♂️ クイックスタート
 
-### 1. 基本システムの実行
+### 1. 環境設定
 ```bash
-python care_matching_system.py
+# リポジトリクローン
+git clone https://github.com/Krminfinity/kemeny-extended-aggregator.git
+cd kemeny-extended-aggregator
+
+# 仮想環境作成・アクティベート
+python -m venv .venv
+.venv\Scripts\activate  # Windows
+# source .venv/bin/activate  # macOS/Linux
+
+# 依存関係インストール
+pip install numpy pandas reportlab openpyxl
 ```
 
-### 2. CSV入力システムの実行
+### 2. 基本的な使用方法
+
+#### アルゴリズムの直接実行
 ```bash
-python csv_matching_system.py
+# 拡張版Kemenyルールのデモ
+python algorithms/extended_kemeny_rule.py
+
+# DAアルゴリズムのデモ  
+python algorithms/deferred_acceptance.py
+
+# 統合システムのデモ
+python algorithms/care_matching_system.py
 ```
 
-### 3. サンプルデータでのテスト
+#### CSV入力でのマッチング実行
+```bash
+# CSV入力システム実行
+python algorithms/csv_matching_system.py
+```
+
+#### テスト実行
+```bash
+# 全テスト実行
+python tests/integrated_test_runner.py
+
+# 特定アルゴリズムのテスト
+python tests/integrated_test_runner.py --kemeny
+python tests/integrated_test_runner.py --da
+
+# 特定テストケース実行
+python tests/integrated_test_runner.py --test kemeny basic_3_candidates
+```
+
+#### レポート生成
+```bash
+# PDFレポート生成
+python scripts/generate_test_report.py
+
+# Excelレポート生成
+python scripts/generate_excel_report.py
+```
+
+## 📊 テスト結果
+
+### 🏆 テスト結果サマリー
+
+| アルゴリズム | テスト数 | 成功 | 失敗 | 成功率 |
+|-------------|---------|------|------|--------|
+| **拡張版Kemenyルール** | 10 | 10 | 0 | **100.0%** |
+| **DAアルゴリズム** | 10 | 10 | 0 | **100.0%** |
+| **全体** | **20** | **20** | **0** | **🎉 100.0%** |
+
+### 📋 テストケース概要
+
+#### 拡張版Kemenyルール (10ケース)
+- 基本的なケース・完全一致・完全不一致
+- 重み付け設定（選好重視・フィット度重視）
+- エッジケース（同点・極端差・単一考慮など）
+
+#### DAアルゴリズム (10ケース)  
+- 論文例・バランス・容量不足・大容量
+- 特殊ケース（同一選好・循環選好・空選好など）
+- スケーラビリティ（大規模ケース）
+
+## 📖 ドキュメント
+
+詳細なドキュメントは `docs/` フォルダに格納されています：
+
+- 📚 **[テスト使用方法](docs/README_BLACKBOX_TESTS.md)**: ブラックボックステストの詳細手順
+- 📊 **[CSV入力ガイド](docs/CSV_INPUT_GUIDE.md)**: CSV形式データの作成・使用方法
+- 🔄 **[アルゴリズムフローチャート](docs/algorithm_flowchart.md)**: 処理フローの視覚化
+- 📈 **[テスト結果サマリー](docs/TEST_REPORT_SUMMARY.md)**: 包括的テスト結果レポート
+
+## 🎓 学術情報
+
+このプロジェクトは以下の卒業論文に基づいています：
+
+- **論文**: 「ケアワーカーと被介護者のマッチングアルゴリズムの開発」
+- **著者**: 倉持誠 (Makoto Kuramochi)
+- **年度**: 2025年
+- **資料**: `thesis/` フォルダに格納
+
+### 主要な貢献
+1. **拡張版Kemenyルール**: 主観的選好と客観的フィット度の重み付き統合
+2. **実用的マッチングシステム**: 現実的な制約を考慮した安定マッチング
+3. **包括的評価**: 多角的な評価指標による性能検証
+
+## 🛠️ 技術仕様
+
+- **言語**: Python 3.13+
+- **主要ライブラリ**: numpy, pandas, reportlab, openpyxl
+- **アルゴリズム**: 拡張版Kemenyルール, Deferred Acceptance
+- **入力形式**: Python辞書, CSV
+- **出力形式**: JSON, CSV, PDF, Excel
+
+## 📊 出力形式
+
+### マッチング結果
+- **JSON**: 詳細な計算過程を含む完全な結果
+- **CSV**: 表形式での結果出力
+
+### テスト結果
+- **PDF**: 印刷に適した統合レポート
+- **Excel**: データ分析に適した多シート詳細レポート
+- **CSV**: データ処理用軽量ファイル
+
+## 🤝 使用例
+
+### プログラムによる使用
 ```python
-from csv_matching_system import demo_csv_matching
-demo_csv_matching()  # サンプルCSVファイルを生成して実行
+from algorithms.extended_kemeny_rule import ExtendedKemenyRule
+from algorithms.deferred_acceptance import DeferredAcceptanceAlgorithm
+
+# 拡張版Kemenyルール
+kemeny = ExtendedKemenyRule(preference_weight=1.0, fitness_weight=1.0)
+ranking, details = kemeny.aggregate_preferences([2,1,0], [0.8,0.9,0.7])
+
+# DAアルゴリズム
+da = DeferredAcceptanceAlgorithm()
+matches, details = da.create_match(recipients, caregivers, 
+                                  recipient_prefs, caregiver_prefs, capacities)
 ```
 
-### 4. カスタムデータでの実行
-```python
-from csv_matching_system import CSVMatchingSystem
-
-system = CSVMatchingSystem()
-result = system.run_complete_matching_from_csv(
-    "your_receiver_subjective.csv",
-    "your_receiver_objective.csv", 
-    "your_worker_subjective.csv",
-    "your_worker_objective.csv",
-    "your_worker_capacity.csv",
-    w_subjective=1.0,  # 主観的選好の重み
-    w_objective=1.0    # 客観的フィット度の重み
-)
-```
-
-## 📚 ドキュメント
-
-- [`CSV_INPUT_GUIDE.md`](CSV_INPUT_GUIDE.md) - CSV入力機能の詳細ガイド
-- [`algorithm_flowchart.md`](algorithm_flowchart.md) - アルゴリズムフローチャート
-- [`卒業論文_発表資料.md`](卒業論文_発表資料.md) - 研究発表資料
-
-## 🔬 アルゴリズムの詳細
-
-### 拡張版Kemenyルール
-- 主観的選好 (ランキング) と客観的フィット度 (レイティング) を統合
-- 重み付きKemeny距離による最適順列の選択
-- 全順列探索による厳密解の計算
-
-### DAアルゴリズム
-- 被介護者側最適な安定マッチング
-- 容量制約対応
-- ブロッキングペアの排除
-
-## 📊 出力結果
-
-- **マッチング結果**: 最終的なペアリング
-- **満足度分析**: 各エージェントの満足度
-- **安定性評価**: マッチングの安定性
-- **統計情報**: マッチング率、利用率など
-- **JSON出力**: 全結果データの保存
-
-## 🔧 その他のツール
-
-### 📁 powerpoint-to-markdown/
-PowerPointファイル（.pptx）をMarkdown形式に変換するユーティリティ
-
-```bash
-cd powerpoint-to-markdown/
-python setup.py
-python convert_pptx.py your_presentation.pptx
-```
-
-## 👨‍💻 作者
-
-倉持誠 (Makoto Kuramochi)  
-卒業論文: 「ケアワーカーと被介護者のマッチングアルゴリズムの開発」
+### CSV入力による使用
+1. `data/` フォルダのサンプルCSVを参考にデータ作成
+2. `python algorithms/csv_matching_system.py` で実行
+3. `results/` フォルダで結果確認
 
 ## 📄 ライセンス
 
-This project is licensed under the MIT License.
+このプロジェクトは学術研究目的で作成されました。商用利用の場合は著者にお問い合わせください。
 
-## 🤝 貢献
+## 👤 著者
 
-プルリクエストやイシューの報告を歓迎します。
+**倉持誠 (Makoto Kuramochi)**
+- 卒業論文「ケアワーカーと被介護者のマッチングアルゴリズムの開発」
+- GitHub: [@Krminfinity](https://github.com/Krminfinity)
 
 ---
 
-*このシステムは学術研究目的で開発されましたが、実際のケアマッチングシステムへの応用も可能です。*
+**最終更新**: 2025年9月27日
