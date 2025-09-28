@@ -9,6 +9,10 @@
 1. 拡張版Kemenyルール: 主観的選好と客観的フィット度を統合
 2. DAアルゴリズム: 安定マッチングを生成
 
+【2025年9月更新】厳格な制約条件を実装:
+- 被介護者・ケアワーカー数の上限制限
+- フィット度は整数のみ（単射性）
+
 Author: 倉持誠 (Makoto Kuramochi)
 """
 
@@ -17,6 +21,7 @@ import numpy as np
 import json
 from extended_kemeny_rule import ExtendedKemenyRule
 from deferred_acceptance import DeferredAcceptanceAlgorithm
+from validation import InputValidator, ConstraintViolationError
 
 
 class CareMatchingSystem:
@@ -38,6 +43,7 @@ class CareMatchingSystem:
     def generate_sample_data(self) -> Dict:
         """
         論文の例に基づくサンプルデータを生成
+        【2025年9月更新】制約準拠：整数フィット度（単射性あり）
         
         Returns:
             Dict: サンプルデータ辞書
@@ -62,19 +68,19 @@ class CareMatchingSystem:
                 3: [7, 4, 5, 6],
             },
             
-            # 客観的フィット度スコア（被介護者 x ケアワーカー）
+            # 客観的フィット度スコア（被介護者 x ケアワーカー）- 整数、単射
             'fitness_scores': {
-                4: [0.7, 0.8, 0.6],  # 被介護者4に対する各ケアワーカーのフィット度
-                5: [0.9, 0.7, 0.8],
-                6: [0.8, 0.9, 0.7],  # 論文の例
-                7: [0.6, 0.8, 0.9],
+                4: [7, 8, 6],   # 被介護者4に対する各ケアワーカーのフィット度（整数、重複なし）
+                5: [9, 7, 8],   # 被介護者5
+                6: [8, 9, 7],   # 被介護者6（論文の例）
+                7: [6, 8, 9],   # 被介護者7
             },
             
-            # ケアワーカーから被介護者への客観的フィット度
+            # ケアワーカーから被介護者への客観的フィット度 - 整数、単射
             'caregiver_fitness_scores': {
-                1: [0.8, 0.7, 0.9, 0.6],  # ケアワーカー1の各被介護者へのフィット度
-                2: [0.7, 0.8, 0.9, 0.8],
-                3: [0.6, 0.8, 0.7, 0.9],
+                1: [8, 7, 9, 6],  # ケアワーカー1の各被介護者へのフィット度（整数、重複なし）
+                2: [7, 8, 9, 5],  # ケアワーカー2
+                3: [6, 8, 7, 9],  # ケアワーカー3
             }
         }
     
@@ -125,18 +131,37 @@ class CareMatchingSystem:
     def run_complete_matching(self, data: Optional[Dict] = None) -> Dict:
         """
         完全なマッチングプロセスを実行
+        【2025年9月更新】制約検証を追加
         
         Args:
             data: 入力データ（省略時はサンプルデータを使用）
             
         Returns:
             Dict: 完全な結果辞書
+            
+        Raises:
+            ConstraintViolationError: 制約違反時
         """
         if data is None:
             data = self.generate_sample_data()
         
         print("=== ケアワーカーと被介護者のマッチングシステム ===")
         print()
+        
+        # 【制約検証】全ての入力データをチェック
+        try:
+            InputValidator.validate_complete_input(
+                data['care_recipients'],
+                data['caregivers'], 
+                data['recipient_subjective_preferences'],
+                data['caregiver_subjective_preferences'],
+                data['fitness_scores'],
+                data['caregiver_fitness_scores'],
+                data['caregiver_capacities']
+            )
+        except ConstraintViolationError as e:
+            print(f"❌ 入力データが制約に違反しています: {e}")
+            raise e
         
         # ステップ1: 選好統合
         print("ステップ1: 拡張版Kemenyルールによる選好統合")

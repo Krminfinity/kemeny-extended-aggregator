@@ -10,12 +10,18 @@
 2. 客観的フィット度（数値による適合性評価）
 を統合して、最適な選好ランキングを生成します。
 
+【2025年9月更新】厳格な制約条件を実装:
+- フィット度は整数のみ
+- フィット度は単射（重複なし）
+- 人数制限の実装
+
 Author: 倉持誠 (Makoto Kuramochi)
 """
 
 import itertools
 from typing import List, Dict, Tuple, Optional, Sequence, Union
 import numpy as np
+from validation import InputValidator, ConstraintViolationError
 
 
 class ExtendedKemenyRule:
@@ -93,7 +99,7 @@ class ExtendedKemenyRule:
             total += self.kemeny_distance(ranking, pref)
         return total
     
-    def fitness_distance(self, ranking: List[int], fitness_scores: List[float]) -> float:
+    def fitness_distance(self, ranking: List[int], fitness_scores: List[int]) -> float:
         """フィット度距離を計算（モードにより2方式）
 
         ordinal: 既存方式（順位化→Kemeny距離）
@@ -141,19 +147,34 @@ class ExtendedKemenyRule:
     
     def aggregate_preferences(self, 
                             subjective_preference: Union[List[int], List[List[int]]],
-                            fitness_scores: List[float],
+                            fitness_scores: Union[List[int], List[float]],
                             candidates: Optional[List[int]] = None) -> Tuple[List[int], Dict]:
         """
         主観的選好と客観的フィット度を統合して最適なランキングを生成
         
+        【2025年9月更新】厳格な制約条件を実装:
+        - フィット度は整数のみ（実数は拒否）
+        - フィット度は単射性（重複なし）
+        
         Args:
             subjective_preference: 主観的選好ランキング
-            fitness_scores: 客観的フィット度スコア
+            fitness_scores: 客観的フィット度スコア（整数のみ）
             candidates: 候補者のリスト（省略時は0からN-1）
             
         Returns:
             Tuple[List[int], Dict]: 最適ランキングと計算詳細
+            
+        Raises:
+            ConstraintViolationError: 制約違反時
         """
+        # 制約検証：フィット度の整数性
+        InputValidator.validate_fitness_scores_are_integers(fitness_scores)
+        
+        # 制約検証：フィット度の単射性
+        InputValidator.validate_fitness_uniqueness(fitness_scores, "入力フィット度")
+        
+        # 整数リストに変換（検証済みなので安全）
+        validated_fitness_scores: List[int] = [int(score) for score in fitness_scores]
         # プロファイル（複数選好）の場合と単一選好を自動判別
         is_profile = False
         if isinstance(subjective_preference, list) and subjective_preference and isinstance(subjective_preference[0], list):
@@ -172,7 +193,7 @@ class ExtendedKemenyRule:
         if candidates is None:
             candidates = list(range(n_candidates))
 
-        if n_candidates != len(fitness_scores):
+        if n_candidates != len(validated_fitness_scores):
             raise ValueError("主観的選好(単一またはプロファイル)とフィット度スコアの長さが一致しません")
         
         # 全ての可能な順列を生成
@@ -192,8 +213,8 @@ class ExtendedKemenyRule:
             else:
                 preference_distance = self.kemeny_distance(perm_list, subjective_preference)  # type: ignore
             
-            # 客観的フィット度との不一致（モードにより整数/実数）
-            fitness_distance = self.fitness_distance(perm_list, fitness_scores)
+            # 客観的フィット度との不一致（整数のみ）
+            fitness_distance = self.fitness_distance(perm_list, validated_fitness_scores)
             
             # 総合スコア（重み付き和）
             total_score = (self.preference_weight * preference_distance + 
@@ -272,14 +293,14 @@ def demo_extended_kemeny():
     print("=== 拡張版Kemenyルール デモ ===")
     print()
     
-    # 論文の例に基づいた設定
+    # 論文の例に基づいた設定（制約に準拠：整数、単射）
     # 被介護者6の例を再現
     subjective_preference = [2, 1, 0]  # ケアワーカー2,1,0の順
-    fitness_scores = [0.8, 0.9, 0.7]   # ケアワーカー0,1,2のフィット度スコア
+    fitness_scores = [8, 9, 7]   # ケアワーカー0,1,2のフィット度スコア（整数、重複なし）
     
     print("設定:")
     print(f"主観的選好: {subjective_preference} (ケアワーカー2>1>0の順)")
-    print(f"客観的フィット度: {fitness_scores} (ケアワーカー0:0.8, 1:0.9, 2:0.7)")
+    print(f"客観的フィット度: {fitness_scores} (ケアワーカー0:8, 1:9, 2:7)")
     print()
     
     # 拡張版Kemenyルールを実行

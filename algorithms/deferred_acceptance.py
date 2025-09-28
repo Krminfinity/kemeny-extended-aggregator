@@ -8,11 +8,14 @@ Deferred Acceptance (DA) アルゴリズムの実装
 DAアルゴリズムは安定マッチングを生成する標準的なアルゴリズムで、
 この実装では被介護者側最適な安定マッチングを生成します。
 
+【2025年9月更新】制約検証機能を追加
+
 Author: 倉持誠 (Makoto Kuramochi)
 """
 
 from typing import List, Dict, Tuple, Optional, Set
 import copy
+from validation import InputValidator, ConstraintViolationError
 
 
 class DeferredAcceptanceAlgorithm:
