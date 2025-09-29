@@ -1,3 +1,44 @@
+# Kemeny Extended Aggregator
+
+ケアワーカー・被介護者マッチングシステム
+拡張版KemenyルールとDeferred Acceptanceアルゴリズムを組み合わせ、主観的選好と客観的フィット度を統合した安定マッチングを実現するPythonシステムです。
+
+## 概要
+- 主観的選好（ランキング）と客観的フィット度（適合度スコア）を統合
+- 厳格な制約（人数上限・フィット度整数・単射性）を自動検証
+- CSVデータやPython辞書での入力に対応
+- 結果はJSON等で出力
+
+## ディレクトリ構成
+```
+algorithms/
+    extended_kemeny_rule.py      # 拡張版Kemenyルール
+## クイックスタート
+```bash
+git clone https://github.com/Krminfinity/kemeny-extended-aggregator.git
+## 実行例
+```bash
+python algorithms/extended_kemeny_rule.py
+## 主な機能
+- 拡張版Kemenyルール: 主観・客観の統合ランキング
+- Deferred Acceptance: 安定マッチング生成
+- バリデーション: 人数・整数・単射性の自動検証
+- CSV/辞書データ対応
+
+## 制約条件（2025年9月実装）
+- 被介護者・ケアワーカー各100人まで
+- フィット度は整数のみ・重複禁止
+- 入力時に全制約を自動検証
+
+## ドキュメント
+- [アルゴリズムフローチャート](docs/algorithm_flowchart.md)
+- [CSV入力ガイド](docs/CSV_INPUT_GUIDE.md)
+- [制約条件まとめ](thesis/ASSUMPTIONS_AND_CONSTRAINTS.md)
+
+## ライセンス・著者
+- 本システムは学術研究目的で開発されています
+- Author: 倉持誠 (Makoto Kuramochi)
+- Year: 2025
 # Kemeny Extended Aggregator# ケアワーカー・被介護者マッチングシステム (Kemeny Extended Aggregator)
 
 
